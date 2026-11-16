@@ -1,16 +1,81 @@
-# React + Vite
+# My Library — Digital Book Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A React application built with Vite that displays a digital library catalog with genre-based filtering, library statistics, and conditional availability indicators.
 
-Currently, two official plugins are available:
+This project demonstrates core React concepts without state hooks (`useState`, `useEffect`) or event handlers:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Functional components and modular architecture
+* Passing data via `props` and wrapper layouts using `children`
+* Rendering and filtering arrays with `map()`, `filter()`, and unique `key` props
+* Conditional rendering with `&&`, ternary operators, and `if` statements
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Library Overview:** Displays the total number of titles in the catalog and how many are currently available for checkout.
+* **Full Catalog & Genre Sections:** Renders the complete book collection alongside dedicated sections for *Fiction*, *Educational*, *Children's Literature*, *Non-Fiction*, and *Popular Science*.
+* **Book Details:** Each book card displays the title, author, publication year, genre, and available copy count.
+* **Status & Edition Badges:**
+    * Automatically labels books published before 2000 as a **Classic Edition**.
+    * Displays a green **Available** badge when copies are in stock (`copies > 0`) or a red **Out of stock** badge otherwise.
+    * Handles empty genre categories gracefully with a fallback message.
 
-## Expanding the Oxlint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```text
+my-library/
+├── src/
+│   ├── components/
+│   │   ├── AvailabilityBadge.jsx
+│   │   ├── BookCard.jsx
+│   │   ├── BookList.jsx
+│   │   ├── Card.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   └── LibraryStats.jsx
+│   ├── data/
+│   │   └── books.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) (version 18 or higher recommended) installed on your machine.
+
+### Installation & Running Locally
+
+1. **Navigate to the project directory:**
+
+   ```bash
+   cd my-library
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in your browser:**
+   Visit the local URL shown in the terminal (typically `http://localhost:5173`).
+
+### Build for Production
+
+To create an optimized production bundle:
+
+```bash
+npm run build
+```
